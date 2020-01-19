@@ -77,10 +77,10 @@
             "value": "Password99#"
         },
         "diagnosticsStorageAccountName": {
-            "value": "testdemodiag420"
+            "value": "testdemodiag4201"
         },
         "diagnosticsStorageAccountId": {
-            "value": "Microsoft.Storage/storageAccounts/testdemodiag420"
+            "value": "Microsoft.Storage/storageAccounts/testdemodiag4201"
         },
         "diagnosticsStorageAccountType": {
             "value": "Standard_LRS"
