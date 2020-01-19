@@ -1,4 +1,16 @@
 # Starter pipeline
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'AzureHome'
+    subscriptionId: 'a2686e23-96e7-48b4-a79d-eed49d26592f'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'Test2-Demo'
+    location: 'East US 2'
+    templateLocation: 'URL of the file'
+    csmFileLink: 'https://dev.azure.com/cosminsipos/_git/devopsdemo?path=%2Ftemplate.json'
+    csmParametersFileLink: 'https://dev.azure.com/cosminsipos/_git/devopsdemo?path=%2Fparameters.json'
+    deploymentMode: 'Incremental'
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
