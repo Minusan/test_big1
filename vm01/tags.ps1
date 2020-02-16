@@ -1,1 +1,2 @@
 get-Azresource
+#for azure
