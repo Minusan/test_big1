@@ -1,0 +1,18 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "virtualMachines_canvastest4_name": {
+            "value": null
+        },
+        "disks_canvastest4_OsDisk_1_7f604691e45b464cbbf974bfdd641618_externalid": {
+            "value": null
+        },
+        "disks_canvastest4_DataDisk_0_externalid": {
+            "value": null
+        },
+        "networkInterfaces_canvastest4163_externalid": {
+            "value": null
+        }
+    }
+}

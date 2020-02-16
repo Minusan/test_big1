@@ -1,0 +1,123 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "virtualMachines_canvastest4_name": {
+            "defaultValue": "canvastest4",
+            "type": "String"
+        },
+        "disks_canvastest4_OsDisk_1_7f604691e45b464cbbf974bfdd641618_externalid": {
+            "defaultValue": "/subscriptions/52e91f15-56da-4e4f-a3ab-536e094ef57c/resourceGroups/DEFAULT-NETWORKING/providers/Microsoft.Compute/disks/canvastest4_OsDisk_1_7f604691e45b464cbbf974bfdd641618",
+            "type": "String"
+        },
+        "disks_canvastest4_DataDisk_0_externalid": {
+            "defaultValue": "/subscriptions/52e91f15-56da-4e4f-a3ab-536e094ef57c/resourceGroups/Default-Networking/providers/Microsoft.Compute/disks/canvastest4_DataDisk_0",
+            "type": "String"
+        },
+        "networkInterfaces_canvastest4163_externalid": {
+            "defaultValue": "/subscriptions/52e91f15-56da-4e4f-a3ab-536e094ef57c/resourceGroups/Default-Networking/providers/Microsoft.Network/networkInterfaces/canvastest4163",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Compute/virtualMachines",
+            "apiVersion": "2019-07-01",
+            "name": "[parameters('virtualMachines_canvastest4_name')]",
+            "location": "westeurope",
+            "tags": {
+                "Environment": "Test",
+                "Cost Center": "Research Platforms",
+                "Service": "Canvas"
+            },
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "Standard_D2s_v3"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "MicrosoftWindowsServer",
+                        "offer": "WindowsServer",
+                        "sku": "2019-Datacenter",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "osType": "Windows",
+                        "name": "[concat(parameters('virtualMachines_canvastest4_name'), '_OsDisk_1_7f604691e45b464cbbf974bfdd641618')]",
+                        "createOption": "FromImage",
+                        "caching": "ReadWrite",
+                        "managedDisk": {
+                            "storageAccountType": "Premium_LRS",
+                            "id": "[parameters('disks_canvastest4_OsDisk_1_7f604691e45b464cbbf974bfdd641618_externalid')]"
+                        },
+                        "diskSizeGB": 127
+                    },
+                    "dataDisks": [
+                        {
+                            "lun": 0,
+                            "name": "[concat(parameters('virtualMachines_canvastest4_name'), '_DataDisk_0')]",
+                            "createOption": "Attach",
+                            "caching": "None",
+                            "writeAcceleratorEnabled": false,
+                            "managedDisk": {
+                                "storageAccountType": "Premium_LRS",
+                                "id": "[parameters('disks_canvastest4_DataDisk_0_externalid')]"
+                            },
+                            "diskSizeGB": 256,
+                            "toBeDetached": false
+                        }
+                    ]
+                },
+                "osProfile": {
+                    "computerName": "[parameters('virtualMachines_canvastest4_name')]",
+                    "adminUsername": "sustadmin",
+                    "windowsConfiguration": {
+                        "provisionVMAgent": true,
+                        "enableAutomaticUpdates": true
+                    },
+                    "secrets": [],
+                    "allowExtensionOperations": true,
+                    "requireGuestProvisionSignal": true
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[parameters('networkInterfaces_canvastest4163_externalid')]"
+                        }
+                    ]
+                },
+                "diagnosticsProfile": {
+                    "bootDiagnostics": {
+                        "enabled": true,
+                        "storageUri": "https://cddbtesthdi.blob.core.windows.net/"
+                    }
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "apiVersion": "2019-07-01",
+            "name": "[concat(parameters('virtualMachines_canvastest4_name'), '/enablevmaccess')]",
+            "location": "westeurope",
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_canvastest4_name'))]"
+            ],
+            "tags": {
+                "Environment": "Test",
+                "Cost Center": "Research Platforms",
+                "Service": "Canvas"
+            },
+            "properties": {
+                "autoUpgradeMinorVersion": true,
+                "publisher": "Microsoft.Compute",
+                "type": "VMAccessAgent",
+                "typeHandlerVersion": "2.0",
+                "settings": {
+                    "UserName": "daniel.groza"
+                },
+                "protectedSettings": {}
+            }
+        }
+    ]
+}
