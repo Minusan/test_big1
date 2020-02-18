@@ -14,23 +14,34 @@
             "defaultValue": "/subscriptions/52e91f15-56da-4e4f-a3ab-536e094ef57c/resourceGroups/Default-Networking/providers/Microsoft.Compute/disks/canvastest4_DataDisk_0",
             "type": "String"
         },
+        "commandToExecute": {
+            "type": "string",
+            "metadata": {
+              "description": "Command to execute script"
+            },
+            "defaultValue": "Test/InfraCode/install_nginx.ps1"
+          },        
         "networkInterfaces_canvastest4163_externalid": {
             "defaultValue": "/subscriptions/52e91f15-56da-4e4f-a3ab-536e094ef57c/resourceGroups/Default-Networking/providers/Microsoft.Network/networkInterfaces/canvastest4163",
             "type": "String"
+        },
+        "taggs":{
+            "type": "object",
+            "defaultValue": {
+                "Environment": "Test",
+                "Service": "Development tools",
+                "Cost Center": "DevOps"
+            }
         }
+
     },
-    "variables": {},
     "resources": [
         {
             "type": "Microsoft.Compute/virtualMachines",
-            "apiVersion": "2019-07-01",
+            "apiVersion": "2019-03-01",
             "name": "[parameters('virtualMachines_canvastest4_name')]",
             "location": "westeurope",
-            "tags": {
-                "Environment": "Test",
-                "Cost Center": "Research Platforms",
-                "Service": "Canvas"
-            },
+            "tags": "[parameters('taggs')]",
             "properties": {
                 "hardwareProfile": {
                     "vmSize": "Standard_D2s_v3"
@@ -77,8 +88,7 @@
                         "enableAutomaticUpdates": true
                     },
                     "secrets": [],
-                    "allowExtensionOperations": true,
-                    "requireGuestProvisionSignal": true
+                    "allowExtensionOperations": true
                 },
                 "networkProfile": {
                     "networkInterfaces": [
@@ -93,30 +103,28 @@
                         "storageUri": "https://cddbtesthdi.blob.core.windows.net/"
                     }
                 }
-            }
+            }           
         },
         {
             "type": "Microsoft.Compute/virtualMachines/extensions",
-            "apiVersion": "2019-07-01",
-            "name": "[concat(parameters('virtualMachines_canvastest4_name'), '/enablevmaccess')]",
+            "apiVersion": "2019-03-01",
+            "name": "[concat(parameters('virtualMachines_canvastest4_name'))]",
             "location": "westeurope",
+            "tags": "[paramenters('taggs')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_canvastest4_name'))]"
             ],
-            "tags": {
-                "Environment": "Test",
-                "Cost Center": "Research Platforms",
-                "Service": "Canvas"
-            },
             "properties": {
                 "autoUpgradeMinorVersion": true,
                 "publisher": "Microsoft.Compute",
                 "type": "VMAccessAgent",
                 "typeHandlerVersion": "2.0",
                 "settings": {
-                    "UserName": "daniel.groza"
+                    "UserName": "root.ansible"
                 },
-                "protectedSettings": {}
+                "protectedSettings": {
+                    "commandToExecute": "[parameters('commandToExecute')]"
+                }
             }
         }
     ]
