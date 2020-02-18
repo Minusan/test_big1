@@ -32,9 +32,6 @@
         "virtualMachineName": {
             "type": "string"
         },
-        "virtualMachineRG": {
-            "type": "string"
-        },
         "osDiskType": {
             "type": "string"
         },
@@ -59,13 +56,8 @@
         "diagnosticsStorageAccountId": {
             "type": "string"
         },
-        "tags": {
-            "type":"object",
-            "defaultValue": {
-                "Environment": "Test",
-                "Service": "Development tools",
-                "Cost Center": "DevOps"
-            }
+        "tags":{
+            "type":"object"
         }
     },
     "variables": {
@@ -140,7 +132,11 @@
                 "name": "managedDiskResources",
                 "count": "[length(parameters('dataDiskResources'))]"
             },
-            "tags": "[parameters('tags')]"
+            "tags": {
+                "Cost Center": "DevOps",
+                "Service": "Development tools",
+                "Environment": "Test"
+            }
         },
         {
             "name": "[parameters('virtualMachineName')]",

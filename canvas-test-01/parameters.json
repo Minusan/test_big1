@@ -2,11 +2,18 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+        "tags":{
+            "value": {
+                "Cost Center": "DevOps",
+                "Service": "Development tools",
+                "Environment": "Test"                  
+            }
+        },
         "location": {
-            "value": "westeurope"
+            "value": "eastus2"
         },
         "networkInterfaceName": {
-            "value": "devops01485"
+            "value": "devops01915"
         },
         "networkSecurityGroupName": {
             "value": "DevOps01-nsg"
@@ -32,7 +39,7 @@
             "value": "default"
         },
         "virtualNetworkId": {
-            "value": "/subscriptions/52e91f15-56da-4e4f-a3ab-536e094ef57c/resourceGroups/Default-Networking/providers/Microsoft.Network/virtualNetworks/dev-cluster"
+            "value": "/subscriptions/a2686e23-96e7-48b4-a79d-eed49d26592f/resourceGroups/canvas-rg/providers/Microsoft.Network/virtualNetworks/canvas-vm"
         },
         "publicIpAddressName": {
             "value": "DevOps01-ip"
@@ -45,9 +52,6 @@
         },
         "virtualMachineName": {
             "value": "DevOps01"
-        },
-        "virtualMachineRG": {
-            "value": "Default-Networking"
         },
         "osDiskType": {
             "value": "Premium_LRS"
@@ -75,7 +79,7 @@
                     "name": "DevOps01_DataDisk_0",
                     "sku": "Premium_LRS",
                     "properties": {
-                        "diskSizeGB": 256,
+                        "diskSizeGB": 32,
                         "creationData": {
                             "createOption": "empty"
                         }
@@ -84,7 +88,7 @@
             ]
         },
         "virtualMachineSize": {
-            "value": "Standard_D2s_v3"
+            "value": "Standard_DS1_v2"
         },
         "adminUsername": {
             "value": "sustadmin"
@@ -93,10 +97,10 @@
             "value": null
         },
         "diagnosticsStorageAccountName": {
-            "value": "cddbtesthdi"
+            "value": "bootdiag01canvas"
         },
         "diagnosticsStorageAccountId": {
-            "value": "/subscriptions/52e91f15-56da-4e4f-a3ab-536e094ef57c/resourceGroups/default-networking/providers/Microsoft.Storage/storageAccounts/cddbtesthdi"
+            "value": "/subscriptions/a2686e23-96e7-48b4-a79d-eed49d26592f/resourceGroups/canvas-rg/providers/Microsoft.Storage/storageAccounts/bootdiag01canvas"
         }
     }
 }
