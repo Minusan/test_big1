@@ -3,16 +3,25 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "virtualMachines_canvastest4_name": {
-            "value": null
+            "value": "canvas-test-02"
         },
         "disks_canvastest4_OsDisk_1_7f604691e45b464cbbf974bfdd641618_externalid": {
-            "value": null
+            "value": "/subscriptions/52e91f15-56da-4e4f-a3ab-536e094ef57c/resourceGroups/DEFAULT-NETWORKING/providers/Microsoft.Compute/disks/canvastest4_OsDisk_1_7f604691e45b464cbbf974bfdd641618"
         },
         "disks_canvastest4_DataDisk_0_externalid": {
-            "value": null
+            "value": "/subscriptions/52e91f15-56da-4e4f-a3ab-536e094ef57c/resourceGroups/Default-Networking/providers/Microsoft.Compute/disks/canvastest4_DataDisk_0"
         },
         "networkInterfaces_canvastest4163_externalid": {
-            "value": null
+            "value": "/subscriptions/52e91f15-56da-4e4f-a3ab-536e094ef57c/resourceGroups/Default-Networking/providers/Microsoft.Network/networkInterfaces/canvastest4163"
+        },
+        "taggs": {
+            "value": {
+                {
+                    "Environment": "Test",
+                    "Service": "Canvas",
+                    "Cost Center": "Research Platform"
+                }  
+            }
         }
     }
 }
