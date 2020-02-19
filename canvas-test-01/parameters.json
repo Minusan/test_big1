@@ -81,7 +81,7 @@
                     "properties": {
                         "diskSizeGB": 32,
                         "creationData": {
-                            "createOption": "attach"
+                            "createOption": "Attach"
                         }
                     }
                 }
