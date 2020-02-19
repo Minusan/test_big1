@@ -13,3 +13,4 @@ Set-Location $path
 start .\nginx.exe
 New-NetFirewallRule -Name HTTP -DisplayName HTTP -Action Allow -Protocol TCP -LocalPort 80
 New-NetFirewallRule -Name HTTPS -DisplayName HTTP -Action Allow -Protocol TCP -LocalPort 443
+exit
