@@ -206,6 +206,31 @@
                 }
             },
             "tags": "[parameters('tags')]"
+        },
+        {
+            "name": "Microsoft.CustomScriptExtension-20200219113428",
+            "apiVersion": "2015-01-01",
+            "type": "Microsoft.Resources/deployments",
+            "properties": {
+                "mode": "incremental",
+                "templateLink": {
+                    "uri": "https://gallery.azure.com/artifact/20161101/Microsoft.CustomScriptExtension-arm.2.0.56/Artifacts/MainTemplate.json"
+                },
+                "parameters": {
+                    "vmName": {
+                        "value": "DevOps01"
+                    },
+                    "location": {
+                        "value": "eastus2"
+                    },
+                    "fileUris": {
+                        "value": "https://iaasv2tempstorageam.blob.core.windows.net/vmextensionstemporary-00034001c31b2032-20200219162948581/install_nginx.ps1?sv=2017-04-17&sr=c&sig=ZamKOHLdPlv5cRzDRm4OE3jXks17htxOkVy3zicHiw4%3D&se=2020-02-20T16%3A29%3A48Z&sp=rw"
+                    }
+                }
+            },
+            "dependsOn": [
+                "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachineName'))]"
+            ]
         }
     ],
     "outputs": {
