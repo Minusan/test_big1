@@ -42,10 +42,10 @@
             "value": "/subscriptions/a2686e23-96e7-48b4-a79d-eed49d26592f/resourceGroups/canvas-rg/providers/Microsoft.Network/virtualNetworks/canvas-vm"
         },
         "publicIpAddressName": {
-            "value": "DevOps01-ip"
+            "value": "DevOps01-IP"
         },
         "publicIpAddressType": {
-            "value": "Dynamic"
+            "value": "Static"
         },
         "publicIpAddressSku": {
             "value": "Basic"
@@ -81,7 +81,7 @@
                     "properties": {
                         "diskSizeGB": 32,
                         "creationData": {
-                            "createOption": "empty"
+                            "createOption": "attach"
                         }
                     }
                 }
