@@ -34,4 +34,7 @@ Out-File -FilePath C:\temp\addcertificate.bat -NoNewline -InputObject $1ststring
 cmd /C C:\temp\addcertificate.bat
 Invoke-WebRequest -Uri https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1 -OutFile c:\temp\ConfigureRemotingForAnsible.ps1
 & "c:\temp\ConfigureRemotingForAnsible.ps1"
+#preparte for PRTG
+Install-WindowsFeature -Name SNMP-Service
+Install-WindowsFeature -Name RSAT-SNMP
 exit
