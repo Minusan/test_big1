@@ -2,9 +2,16 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+        "tags":{
+            "value": {
+                "Cost Center": "DevOps",
+                "Service": "Development tools",
+                "Environment": "Test"                  
+            }
+        },
         "location": {
             "value": "eastus2"
-        },
+        },    
         "networkInterfaceName": {
             "value": "devops01353"
         },
