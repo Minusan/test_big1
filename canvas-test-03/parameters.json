@@ -9,14 +9,14 @@
                 "Environment": "Test"                  
             }
         },
+        "virtualMachineName": {
+            "value": "DevOps01"
+        },
+        "virtualMachineSize": {
+            "value": "Standard_DS1_v2"
+        },
         "location": {
             "value": "eastus2"
-        },    
-        "networkInterfaceName": {
-            "value": "devops01353"
-        },
-        "networkSecurityGroupName": {
-            "value": "DevOps01-nsg"
         },
         "networkSecurityGroupRules": {
             "value": [
@@ -95,20 +95,11 @@
                 }
             ]
         },
-        "publicIpAddressName": {
-            "value": "DevOps01-ip"
-        },
         "publicIpAddressType": {
             "value": "Static"
         },
         "publicIpAddressSku": {
             "value": "Basic"
-        },
-        "virtualMachineName": {
-            "value": "DevOps01"
-        },
-        "virtualMachineRG": {
-            "value": "canvas-rg"
         },
         "osDiskType": {
             "value": "Premium_LRS"
@@ -143,9 +134,6 @@
                     }
                 }
             ]
-        },
-        "virtualMachineSize": {
-            "value": "Standard_DS1_v2"
         },
         "adminUsername": {
             "value": "sustadmin"
