@@ -11,15 +11,6 @@
         "subnetName": {
             "type": "string"
         },
-        "virtualNetworkName": {
-            "type": "string"
-        },
-        "addressPrefixes": {
-            "type": "array"
-        },
-        "subnets": {
-            "type": "array"
-        },
         "publicIpAddressType": {
             "type": "string"
         },
@@ -59,6 +50,9 @@
         "diagnosticsStorageAccountKind": {
             "type": "string"
         },
+        "virtualNetworkId": {
+            "type":"string"
+        }
         "tags":{
             "type":"object"
         }
@@ -66,7 +60,7 @@
     "variables": {
         "networkSecurityGroupName": "[concat(parameters('virtualMachineName'), '_nsg')]",
         "nsgId": "[resourceId(resourceGroup().name, 'Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]",
-        "vnetId": "[resourceId(resourceGroup().name,'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
+        "vnetId": "[parameters('virtualNetworkId')]",
         "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnetName'))]",
         "networkInterfaceName": "[concat(parameters('virtualMachineName'), '_nic')]",
         "publicIpAddressName": "[concat(parameters('virtualMachineName'),'-ip')]"
@@ -79,7 +73,6 @@
             "location": "[parameters('location')]",
             "dependsOn": [
                 "[concat('Microsoft.Network/networkSecurityGroups/', variables('networkSecurityGroupName'))]",
-                "[concat('Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]",
                 "[concat('Microsoft.Network/publicIpAddresses/', variables('publicIpAddressName'))]"
             ],
             "properties": {
@@ -110,19 +103,6 @@
             "location": "[parameters('location')]",
             "properties": {
                 "securityRules": "[parameters('networkSecurityGroupRules')]"
-            },
-            "tags": "[parameters('tags')]"
-        },
-        {
-            "name": "[parameters('virtualNetworkName')]",
-            "type": "Microsoft.Network/virtualNetworks",
-            "apiVersion": "2019-09-01",
-            "location": "[parameters('location')]",
-            "properties": {
-                "addressSpace": {
-                    "addressPrefixes": "[parameters('addressPrefixes')]"
-                },
-                "subnets": "[parameters('subnets')]"
             },
             "tags": "[parameters('tags')]"
         },
@@ -160,7 +140,6 @@
             "apiVersion": "2019-07-01",
             "location": "[parameters('location')]",
             "dependsOn": [
-                "managedDiskResources",
                 "[concat('Microsoft.Network/networkInterfaces/', variables('networkInterfaceName'))]",
                 "[concat('Microsoft.Storage/storageAccounts/', parameters('diagnosticsStorageAccountName'))]"
             ],
@@ -247,10 +226,10 @@
                 },
                 "parameters": {
                     "vmName": {
-                        "value": "DevOps01"
+                        "value": "[parameters('virtualMachineName')]"
                     },
                     "location": {
-                        "value": "eastus2"
+                        "value": "[parameters('location')]"
                     },
                     "fileUris": {
                         "value": "https://bootdiag01canvas.blob.core.windows.net/powershell/install_nginx.ps1"

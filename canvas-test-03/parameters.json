@@ -18,6 +18,12 @@
         "location": {
             "value": "eastus2"
         },
+        "virtualNetworkId": {
+            "value":"/subscriptions/a2686e23-96e7-48b4-a79d-eed49d26592f/resourceGroups/canvas-rg/providers/Microsoft.Network/virtualNetworks/canvas-vm"
+        },
+        "subnetName": {
+            "value": "default"
+        },
         "networkSecurityGroupRules": {
             "value": [
                 {
@@ -70,27 +76,6 @@
                         "sourcePortRange": "*",
                         "destinationAddressPrefix": "*",
                         "destinationPortRange": "80"
-                    }
-                }
-            ]
-        },
-        "subnetName": {
-            "value": "default"
-        },
-        "virtualNetworkName": {
-            "value": "canvas-vm"
-        },
-        "addressPrefixes": {
-            "value": [
-                "10.120.75.0/24"
-            ]
-        },
-        "subnets": {
-            "value": [
-                {
-                    "name": "default",
-                    "properties": {
-                        "addressPrefix": "10.120.75.0/25"
                     }
                 }
             ]
