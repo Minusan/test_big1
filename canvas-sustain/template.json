@@ -60,7 +60,8 @@
         "vnetId": "[parameters('virtualNetworkId')]",
         "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnetName'))]",
         "networkInterfaceName": "[concat(parameters('virtualMachineName'), '-nic')]",
-        "publicIpAddressName": "[concat(parameters('virtualMachineName'), '-ip')]"
+        "publicIpAddressName": "[concat(parameters('virtualMachineName'), '-ip')]",
+        "datadiskname":"[concat(parameters('virtualMachineName'), '_DataDisk01')]"
 
     },
     "resources": [
@@ -169,7 +170,7 @@
                                 "writeAcceleratorEnabled": "[parameters('dataDisks')[copyIndex('dataDisks')].writeAcceleratorEnabled]",
                                 "diskSizeGB": "[parameters('dataDisks')[copyIndex('dataDisks')].diskSizeGB]",
                                 "managedDisk": {
-                                    "id": "[coalesce(parameters('dataDisks')[copyIndex('dataDisks')].id, if(equals(parameters('dataDisks')[copyIndex('dataDisks')].name, json('null')), json('null'), resourceId('Microsoft.Compute/disks', parameters('dataDisks')[copyIndex('dataDisks')].name)))]",
+                                    "id": "[coalesce(parameters('dataDisks')[copyIndex('dataDisks')].id, if(equals(variables('datadiskname'), json('null')), json('null'), resourceId('Microsoft.Compute/disks', variables('datadiskname'))))]",
                                     "storageAccountType": "[parameters('dataDisks')[copyIndex('dataDisks')].storageAccountType]"
                                 }
                             }

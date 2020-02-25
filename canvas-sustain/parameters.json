@@ -32,7 +32,6 @@
                     "caching": "None",
                     "writeAcceleratorEnabled": false,
                     "id": null,
-                    "name": "canvas-test-02_DataDisk_0",
                     "storageAccountType": null,
                     "diskSizeGB": null,
                     "diskEncryptionSet": {
@@ -44,7 +43,6 @@
         "dataDiskResources": {
             "value": [
                 {
-                    "name": "canvas-test-02_DataDisk_0",
                     "sku": "Premium_LRS",
                     "properties": {
                         "diskSizeGB": 32,
