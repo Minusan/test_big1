@@ -24,6 +24,37 @@
         "location": {
             "value": "eastus2"
         },
+        "dataDisks": {
+            "value": [
+                {
+                    "lun": 0,
+                    "createOption": "attach",
+                    "caching": "None",
+                    "writeAcceleratorEnabled": false,
+                    "id": null,
+                    "name": "canvas-test-02_DataDisk_0",
+                    "storageAccountType": null,
+                    "diskSizeGB": null,
+                    "diskEncryptionSet": {
+                        "id": null
+                    }
+                }
+            ]
+        },
+        "dataDiskResources": {
+            "value": [
+                {
+                    "name": "canvas-test-02_DataDisk_0",
+                    "sku": "Premium_LRS",
+                    "properties": {
+                        "diskSizeGB": 32,
+                        "creationData": {
+                            "createOption": "empty"
+                        }
+                    }
+                }
+            ]
+        },
         "networkSecurityGroupRules": {
             "value": [
                 {
@@ -78,37 +109,6 @@
         },
         "osDiskType": {
             "value": "Premium_LRS"
-        },
-        "dataDisks": {
-            "value": [
-                {
-                    "lun": 0,
-                    "createOption": "attach",
-                    "caching": "None",
-                    "writeAcceleratorEnabled": false,
-                    "id": null,
-                    "name": "DevOps01_DataDisk_0",
-                    "storageAccountType": null,
-                    "diskSizeGB": null,
-                    "diskEncryptionSet": {
-                        "id": null
-                    }
-                }
-            ]
-        },
-        "dataDiskResources": {
-            "value": [
-                {
-                    "name": "DevOps01_DataDisk_0",
-                    "sku": "Premium_LRS",
-                    "properties": {
-                        "diskSizeGB": 32,
-                        "creationData": {
-                            "createOption": "empty"
-                        }
-                    }
-                }
-            ]
         },
         "adminUsername": {
             "value": "sustadmin"
