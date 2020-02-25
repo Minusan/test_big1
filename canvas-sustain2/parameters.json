@@ -93,7 +93,24 @@
                         "destinationAddressPrefix": "*",
                         "destinationPortRange": "443"
                     }
-                }
+                },
+                {
+                        "name": "Port_5986",
+                        "properties": {
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "5986",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 350,
+                            "direction": "Inbound",
+                            "sourceAddressPrefixes": [
+                                "52.174.194.2/32",
+                                "89.238.218.126/32",
+                                "89.238.218.34/32"
+                            ]
+                        }
+                    }
             ]
         },
         "subnetName": {
