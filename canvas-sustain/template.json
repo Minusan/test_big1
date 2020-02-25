@@ -119,7 +119,7 @@
             "tags": "[parameters('tags')]"
         },
         {
-            "name": "[parameters('dataDiskResources')[copyIndex()].name]",
+            "name": "[variables('datadiskname')]",
             "type": "Microsoft.Compute/disks",
             "apiVersion": "2019-07-01",
             "location": "[parameters('location')]",
