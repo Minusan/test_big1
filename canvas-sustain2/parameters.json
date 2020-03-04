@@ -135,7 +135,7 @@
             "value": "bootdiag01canvas"
         },
         "diagnosticsStorageAccountId": {
-            "value": "/subscriptions/52e91f15-56da-4e4f-a3ab-536e094ef57c/resourceGroups/default-networking/providers/Microsoft.Storage/storageAccounts/cddbtesthdi"
+            "value": "/subscriptions/a2686e23-96e7-48b4-a79d-eed49d26592f/resourceGroups/canvas-rg/providers/Microsoft.Storage/storageAccounts/bootdiag01canvas"
         }
     }
 }
