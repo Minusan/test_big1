@@ -62,7 +62,6 @@
         "networkInterfaceName": "[concat(parameters('virtualMachineName'), '-nic')]",
         "publicIpAddressName": "[concat(parameters('virtualMachineName'), '-ip')]",
         "datadiskname":"[concat(parameters('virtualMachineName'), '_DataDisk01')]"
-
     },
     "resources": [
         {
@@ -111,7 +110,10 @@
             "apiVersion": "2019-02-01",
             "location": "[parameters('location')]",
             "properties": {
-                "publicIpAllocationMethod": "[parameters('publicIpAddressType')]"
+                "publicIpAllocationMethod": "[parameters('publicIpAddressType')]",
+                "dnsSettings":{
+                    "domainNameLabel": "[parameters('virtualMachineName')]"
+                }
             },
             "sku": {
                 "name": "[parameters('publicIpAddressSku')]"
