@@ -3,5 +3,5 @@ variable "aws_region" {
 }
 
 variable "project_name" {
-  default = "cosmintest"
+  default = "cosmintest1213"
 }
