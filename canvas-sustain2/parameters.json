@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "virtualMachineName": {
-            "value": "canvass-test-05"
+            "value": "canvass-test-06"
         },
         "tags": {
             "value":{
