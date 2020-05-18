@@ -43,7 +43,7 @@
         "dataDiskResources": {
             "value": [
                 {
-                    "sku": "Premium_LRS",
+                    "sku": "StandardSSD_LRS",
                     "properties": {
                         "diskSizeGB": 32,
                         "creationData": {
@@ -126,7 +126,7 @@
             "value": "canvas-rg"
         },
         "osDiskType": {
-            "value": "Premium_LRS"
+            "value": "StandardSSD_LRS"
         },
         "adminUsername": {
             "value": "sustadmin"
