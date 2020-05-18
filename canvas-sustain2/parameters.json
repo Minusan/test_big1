@@ -43,7 +43,7 @@
         "dataDiskResources": {
             "value": [
                 {
-                    "sku": "Premium_LRS",
+                    "sku": "StandardSSD_LRS",
                     "properties": {
                         "diskSizeGB": 32,
                         "creationData": {
