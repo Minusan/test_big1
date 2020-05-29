@@ -3,6 +3,13 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem
 Get-Disk -FriendlyName "Msft Virtual Disk" | Initialize-Disk -PartitionStyle MBR
 New-Partition -DiskNumber 2 -DriveLetter F -UseMaximumSize
 Format-Volume -DriveLetter F -FileSystem NTFS
+#preparte for PRTG
+Install-WindowsFeature -Name SNMP-Service
+Install-WindowsFeature -Name RSAT-SNMP
+#prepare for Flask
+Install-WindowsFeature -name Web-Server,Web-CGI -IncludeManagementTools
+New-IISSiteBinding -Name "Default Web Site" -Protocol http -BindingInformation *:10280:
+Remove-IISSiteBinding -Name "Default Web Site" -Protocol http -BindingInformation *:80: -Confirm:$false 
 #install nginx
 New-Item -ItemType Directory -Force -Path F:\nginx
 $origin = "F:\nginx"
@@ -41,11 +48,6 @@ Out-File -FilePath C:\temp\addcertificate.bat -NoNewline -InputObject $1ststring
 cmd /C C:\temp\addcertificate.bat
 Invoke-WebRequest -Uri https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1 -OutFile c:\temp\ConfigureRemotingForAnsible.ps1
 & "c:\temp\ConfigureRemotingForAnsible.ps1"
-#preparte for PRTG
-Install-WindowsFeature -Name SNMP-Service
-Install-WindowsFeature -Name RSAT-SNMP
-Install-WindowsFeature -name Web-Server,Web-CGI -IncludeManagementTools
-
 #install Chrome
 $Path = $env:TEMP
 $Installer = "chrome_installer.exe"
