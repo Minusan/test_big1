@@ -208,6 +208,7 @@
             "name": "Microsoft.CustomScriptExtension-20200220202953",
             "apiVersion": "2019-10-01",
             "type": "Microsoft.Resources/deployments",
+            "tags": "[parameters('tags')]",
             "properties": {
                 "mode": "incremental",
                 "templateLink": {
@@ -225,7 +226,6 @@
                     }
                 }
             },
-            "tags": "[parameters('tags')]",
             "dependsOn": [
                 "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachineName'))]"
             ]
