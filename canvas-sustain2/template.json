@@ -225,6 +225,7 @@
                     }
                 }
             },
+            "tags": "[parameters('tags')]",
             "dependsOn": [
                 "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachineName'))]"
             ]
