@@ -206,7 +206,7 @@
         },
         {
             "name": "Microsoft.CustomScriptExtension-20200220202953",
-            "apiVersion": "2019-05-01",
+            "apiVersion": "2019-10-01",
             "type": "Microsoft.Resources/deployments",
             "properties": {
                 "mode": "incremental",
