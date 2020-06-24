@@ -205,25 +205,21 @@
             "tags": "[parameters('tags')]"
         },
         {
-            "name": "Microsoft.CustomScriptExtension-20200220202953",
-            "apiVersion": "2019-10-01",
-            "type": "Microsoft.Resources/deployments",
+            "name": "VirtualMachine.extension",
+            "apiVersion": "2018-06-01",
+            "type": "Microsoft.Compute/virtualMachines/extensions",
             "tags": "[parameters('tags')]",
             "properties": {
-                "mode": "incremental",
-                "templateLink": {
-                    "uri": "https://gallery.azure.com/artifact/20161101/Microsoft.CustomScriptExtension-arm.2.0.56/Artifacts/MainTemplate.json"
-                },
-                "parameters": {
-                    "vmName": {
-                        "value": "[parameters('virtualMachineName')]"
-                    },
-                    "location": {
-                        "value": "[parameters('location')]"
-                    },
-                    "fileUris": {
-                        "value": "https://bootdiag01canvas.blob.core.windows.net/powershell/install_nginx.ps1"
-                    }
+                "publisher": "Microsoft.Compute",
+                "type": "CustomScriptExtension",
+                "typeHandlerVersion": "1.10",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "fileUris": [
+                        "https://bootdiag01canvas.blob.core.windows.net/powershell/install_nginx.ps1"
+                    ],
+                    "timestamp": "123456789",
+                    "commandToExecute": "powershell.exe"
                 }
             },
             "dependsOn": [
