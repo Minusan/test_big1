@@ -1,0 +1,144 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "virtualMachineName": {
+            "value": "canvass-test-07"
+        },
+        "tags": {
+            "value":{
+                "Cost Center": "DevOps",
+                "Service": "Development tools",
+                "Environment": "Test"
+            }       
+        },
+        "virtualMachineSize": {
+            "value": "Standard_D2s_v3"
+        },
+        "publicIpAddressType": {
+            "value": "Static"
+        },
+        "virtualNetworkId": {
+            "value": "/subscriptions/a2686e23-96e7-48b4-a79d-eed49d26592f/resourceGroups/canvas-rg/providers/Microsoft.Network/virtualNetworks/canvas-vm"
+        },
+        "location": {
+            "value": "eastus2"
+        },
+        "dataDisks": {
+            "value": [
+                {
+                    "lun": 0,
+                    "createOption": "attach",
+                    "caching": "None",
+                    "writeAcceleratorEnabled": false,
+                    "id": null,
+                    "storageAccountType": null,
+                    "diskSizeGB": null,
+                    "diskEncryptionSet": {
+                        "id": null
+                    }
+                }
+            ]
+        },
+        "dataDiskResources": {
+            "value": [
+                {
+                    "sku": "StandardSSD_LRS",
+                    "properties": {
+                        "diskSizeGB": 32,
+                        "creationData": {
+                            "createOption": "empty"
+                        }
+                    }
+                }
+            ]
+        },
+        "networkSecurityGroupRules": {
+            "value": [
+                {
+                    "name": "SSH",
+                    "properties": {
+                        "priority": 300,
+                        "protocol": "TCP",
+                        "access": "Allow",
+                        "direction": "Inbound",
+                        "sourceAddressPrefix": "*",
+                        "sourcePortRange": "*",
+                        "destinationAddressPrefix": "*",
+                        "destinationPortRange": "22"
+                    }
+                },
+                {
+                    "name": "HTTP",
+                    "properties": {
+                        "priority": 320,
+                        "protocol": "TCP",
+                        "access": "Allow",
+                        "direction": "Inbound",
+                        "sourceAddressPrefix": "*",
+                        "sourcePortRange": "*",
+                        "destinationAddressPrefix": "*",
+                        "destinationPortRange": "80"
+                    }
+                },
+                {
+                    "name": "HTTPS",
+                    "properties": {
+                        "priority": 340,
+                        "protocol": "TCP",
+                        "access": "Allow",
+                        "direction": "Inbound",
+                        "sourceAddressPrefix": "*",
+                        "sourcePortRange": "*",
+                        "destinationAddressPrefix": "*",
+                        "destinationPortRange": "443"
+                    }
+                },
+                {
+                        "name": "Port_5986",
+                        "properties": {
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "5986",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 350,
+                            "direction": "Inbound",
+                            "sourceAddressPrefixes": [
+                                "52.174.194.2/32",
+                                "89.238.218.126/32",
+                                "89.238.218.34/32",
+                                "70.55.228.172",
+                                "52.174.194.20/32",
+                                "102.45.25.66/32"
+                            ]
+                        }
+                    }
+            ]
+        },
+        "subnetName": {
+            "value": "default"
+        },
+        "publicIpAddressSku": {
+            "value": "Basic"
+        },
+        "virtualMachineRG": {
+            "value": "canvas-rg"
+        },
+        "osDiskType": {
+            "value": "Premium_LRS"
+        },
+        "adminUsername": {
+            "value": "ubuntu"
+        },
+        "adminPublicKey": {
+            "value": null
+        },
+        "diagnosticsStorageAccountName": {
+            "value": "bootdiag01canvas"
+        },
+        "diagnosticsStorageAccountId": {
+            "value": "/subscriptions/a2686e23-96e7-48b4-a79d-eed49d26592f/resourceGroups/canvas-rg/providers/Microsoft.Storage/storageAccounts/bootdiag01canvas"
+        }
+    }
+}
