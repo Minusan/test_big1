@@ -132,7 +132,7 @@
             "value": "ubuntu"
         },
         "adminPublicKey": {
-            "value": "AAAAB3NzaC1yc2EAAAABJQAAAQEAu8eNj0P0X1gYzeASxsXo/zxH9pKG6Y3qbFAmHwZ+zAjKiNzIFG5IPTlnAGOwMvJDjL+9o2I2lFHKxPrVwIwx7lwnExq2UVKJA1eaewxwUBGviCErsdZdnL9ItvVdAi6RFthnFBoI3zgaiYLNMsdF10L6WyzqF45mfcimADgyAyhaQjuS+/DJLLMSG+M83p++s3uUVI/GTbSDeim9yqh+iFCwaFhCjDcnDddnukn7WEB3/MR838DT/A2Enl3QYqF4yeWLaqSS4mJFPuja67SHG8+8EG6nqozxOmrXa/pm92yC45rrsVNYTPVW9QQpPWGOcnH9egCLBZUc7B0KMC0nnw=="
+            "value": null
         },
         "diagnosticsStorageAccountName": {
             "value": "bootdiag01canvas"
