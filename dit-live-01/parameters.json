@@ -1,15 +1,57 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+        "virtualMachineName": {
+            "value": "canvass-test-07"
+        },
+        "tags": {
+            "value":{
+                "Cost Center": "DevOps",
+                "Service": "Development tools",
+                "Environment": "Test"
+            }       
+        },
+        "virtualMachineSize": {
+            "value": "Standard_D2s_v3"
+        },
+        "publicIpAddressType": {
+            "value": "Static"
+        },
+        "virtualNetworkId": {
+            "value": "/subscriptions/a2686e23-96e7-48b4-a79d-eed49d26592f/resourceGroups/canvas-rg/providers/Microsoft.Network/virtualNetworks/canvas-vm"
+        },
         "location": {
             "value": "eastus2"
         },
-        "networkInterfaceName": {
-            "value": "dit-livee-01722"
+        "dataDisks": {
+            "value": [
+                {
+                    "lun": 0,
+                    "createOption": "attach",
+                    "caching": "None",
+                    "writeAcceleratorEnabled": false,
+                    "id": null,
+                    "storageAccountType": null,
+                    "diskSizeGB": null,
+                    "diskEncryptionSet": {
+                        "id": null
+                    }
+                }
+            ]
         },
-        "networkSecurityGroupName": {
-            "value": "dit-livee-01-nsg"
+        "dataDiskResources": {
+            "value": [
+                {
+                    "sku": "StandardSSD_LRS",
+                    "properties": {
+                        "diskSizeGB": 32,
+                        "creationData": {
+                            "createOption": "empty"
+                        }
+                    }
+                }
+            ]
         },
         "networkSecurityGroupRules": {
             "value": [
@@ -25,75 +67,72 @@
                         "destinationAddressPrefix": "*",
                         "destinationPortRange": "22"
                     }
-                }
+                },
+                {
+                    "name": "HTTP",
+                    "properties": {
+                        "priority": 320,
+                        "protocol": "TCP",
+                        "access": "Allow",
+                        "direction": "Inbound",
+                        "sourceAddressPrefix": "*",
+                        "sourcePortRange": "*",
+                        "destinationAddressPrefix": "*",
+                        "destinationPortRange": "80"
+                    }
+                },
+                {
+                    "name": "HTTPS",
+                    "properties": {
+                        "priority": 340,
+                        "protocol": "TCP",
+                        "access": "Allow",
+                        "direction": "Inbound",
+                        "sourceAddressPrefix": "*",
+                        "sourcePortRange": "*",
+                        "destinationAddressPrefix": "*",
+                        "destinationPortRange": "443"
+                    }
+                },
+                {
+                        "name": "Port_5986",
+                        "properties": {
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "5986",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 350,
+                            "direction": "Inbound",
+                            "sourceAddressPrefixes": [
+                                "52.174.194.2/32",
+                                "89.238.218.126/32",
+                                "89.238.218.34/32",
+                                "70.55.228.172",
+                                "52.174.194.20/32",
+                                "102.45.25.66/32"
+                            ]
+                        }
+                    }
             ]
         },
         "subnetName": {
-            "value": "canvas02"
-        },
-        "virtualNetworkId": {
-            "value": "/subscriptions/a2686e23-96e7-48b4-a79d-eed49d26592f/resourceGroups/canvas-rg/providers/Microsoft.Network/virtualNetworks/canvas-vm"
-        },
-        "publicIpAddressName": {
-            "value": "dit-livee-01-ip"
-        },
-        "publicIpAddressType": {
-            "value": "Dynamic"
+            "value": "default"
         },
         "publicIpAddressSku": {
             "value": "Basic"
-        },
-        "virtualMachineName": {
-            "value": "dit-livee-01"
-        },
-        "virtualMachineComputerName": {
-            "value": "dit-livee-01"
         },
         "virtualMachineRG": {
             "value": "canvas-rg"
         },
         "osDiskType": {
-            "value": "StandardSSD_LRS"
-        },
-        "dataDisks": {
-            "value": [
-                {
-                    "lun": 0,
-                    "createOption": "attach",
-                    "caching": "None",
-                    "writeAcceleratorEnabled": false,
-                    "id": null,
-                    "name": "dit-livee-01_DataDisk_0",
-                    "storageAccountType": null,
-                    "diskSizeGB": null,
-                    "diskEncryptionSet": {
-                        "id": null
-                    }
-                }
-            ]
-        },
-        "dataDiskResources": {
-            "value": [
-                {
-                    "name": "dit-livee-01_DataDisk_0",
-                    "sku": "StandardSSD_LRS",
-                    "properties": {
-                        "diskSizeGB": 32,
-                        "creationData": {
-                            "createOption": "empty"
-                        }
-                    }
-                }
-            ]
-        },
-        "virtualMachineSize": {
-            "value": "Standard_B2ms"
+            "value": "Premium_LRS"
         },
         "adminUsername": {
             "value": "ubuntu"
         },
         "adminPublicKey": {
-            "value":"AAAAB3NzaC1yc2EAAAABJQAAAQEAu8eNj0P0X1gYzeASxsXo/zxH9pKG6Y3qbFAmHwZ+zAjKiNzIFG5IPTlnAGOwMvJDjL+9o2I2lFHKxPrVwIwx7lwnExq2UVKJA1eaewxwUBGviCErsdZdnL9ItvVdAi6RFthnFBoI3zgaiYLNMsdF10L6WyzqF45mfcimADgyAyhaQjuS+/DJLLMSG+M83p++s3uUVI/GTbSDeim9yqh+iFCwaFhCjDcnDddnukn7WEB3/MR838DT/A2Enl3QYqF4yeWLaqSS4mJFPuja67SHG8+8EG6nqozxOmrXa/pm92yC45rrsVNYTPVW9QQpPWGOcnH9egCLBZUc7B0KMC0nnw=="             
+            "value": null
         },
         "diagnosticsStorageAccountName": {
             "value": "bootdiag01canvas"
