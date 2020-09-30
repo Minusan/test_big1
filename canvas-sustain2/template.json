@@ -1,5 +1,5 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
@@ -206,9 +206,8 @@
         },
         {
             "name": "Microsoft.CustomScriptExtension-20200220202953",
-            "apiVersion": "2019-10-01",
+            "apiVersion": "2015-01-01",
             "type": "Microsoft.Resources/deployments",
-            "tags": "[parameters('tags')]",
             "properties": {
                 "mode": "incremental",
                 "templateLink": {
