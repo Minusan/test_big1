@@ -14,6 +14,7 @@ resource "aws_instance" "instance" {
   ami           = var.AMI
   instance_type = var.INSTANCE_TYPE
 
+
   root_block_device {
     volume_size           = var.root_size
     encrypted = true
@@ -27,6 +28,15 @@ resource "aws_instance" "instance" {
 
   # the public SSH key
   key_name = var.key_name
+
+  #start-up script
+  user_data = << EOF
+              $Path = $env:TEMP
+              $Installer = "chrome_installer.exe"
+              Invoke-WebRequest "http://dl.google.com/chrome/install/375.126/chrome_installer.exe" -OutFile $Path\$Installer
+              Start-Process -FilePath $Path\$Installer -Args "/silent /install" -Verb RunAs -Wait
+              Remove-Item $Path\$Installer -Force
+  EOF
 
 #  provisioner "remote-exec" {
 #      inline = [  
