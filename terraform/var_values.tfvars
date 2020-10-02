@@ -1,14 +1,14 @@
 ### VPC info
-AWS_REGION         = "eu-west-1"
-vpc_id             = "vpc-062b78d85f59f6113"
-public_subnet_ids  = ["subnet-0155fce74daf2665b", "subnet-02f2ef2f38b96e923"]
-private_subnets    = ["subnet-031cd3bbbc720008d"]
-aws_sg_id          = ["sg-01f876abc44d87a3b", "sg-0c8b372547b404857"]
+AWS_REGION         = "us-east-1"
+vpc_id             = "vpc-006c1b1e18a65d74f"
+public_subnet_ids  = ["subnet-02364c561847fc622", "subnet-06cdf30b1a6c46e83"]
+private_subnets    = ["subnet-0fe8a305eb1452691"]
+aws_sg_id          = ["sg-0cfc374136fcda9c8",]
 
 ### EC2 Instance info
-AMI                = "ami-03acdf9028d28249e"
-INSTANCE_TYPE      = "m5.xlarge"
-key_name           = "mstar-stga-prod"
+AMI                = "ami-0eb7fbcc77e5e6ec6"
+INSTANCE_TYPE      = "t2.micro"
+key_name           = "cosminkey"
 associate_eip      = "false"
 eip_id             = "eipalloc-0c1f5e209a98f496f"
 root_size          = "30"
@@ -18,7 +18,7 @@ volume = {
     }
 
 ### S3 for tfstate info
-bucket             = "mstar-stga-prod-eu-west-1-provisioning-tfstate"
+bucket             = "cosmin-terra"
 key                = "Test_EC2.tfstate"
 
 ### Tags
@@ -31,7 +31,7 @@ TID             = "SUST"
 service         = "Global Access"
 
 # ALB
-create_lb           = "true"
+create_lb           = "false"
 create_globalaccelerator    = "true"
 name_alb            = "Test_EC2"
 load_balancer_type  = "application"
@@ -48,7 +48,7 @@ target_group_port   = 80
 target_group_sticky = "false"
 
 #Route 53
-create_route53      = "true"
+create_route53      = "false"
 zone_id             = "Z073262128X8X3VFHVYUI"
 zone_name           = "test.devops.sustainalytics.com"
 zone_type           = "A"
