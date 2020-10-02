@@ -183,3 +183,9 @@ variable "target_group_sticky" {}
 variable "zone_id" {}
 variable "zone_name" {}
 variable "zone_type" {}
+variable "create_route53" {
+  default = "false"
+  }
+variable "create_globalaccelerator" {
+  default = "false"
+  }

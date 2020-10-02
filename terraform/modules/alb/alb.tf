@@ -457,7 +457,7 @@ resource "aws_alb_target_group_attachment" "alb_target_demo_gw_80" {
 }
 
 resource "aws_route53_record" "www" {
-  count   = var.create_lb ? 1 : 0
+  count   = var.create_route53 ? 1 : 0
   zone_id = var.zone_id
   name    = var.zone_name
   type    = var.zone_type
@@ -466,5 +466,38 @@ resource "aws_route53_record" "www" {
     name                   = aws_lb.this[0].dns_name
     zone_id                = aws_lb.this[0].zone_id
     evaluate_target_health = true
+  }
+}
+
+resource "aws_globalaccelerator_accelerator" "accelerator" {
+  count   = var.create_globalaccelerator ? 1 : 0
+  name            = var.name
+  ip_address_type = "IPV4"
+  enabled         = true
+
+  attributes {
+    flow_logs_enabled = false
+  }
+}
+
+resource "aws_globalaccelerator_listener" "listener" {
+  count   = var.create_globalaccelerator ? 1 : 0
+  accelerator_arn = aws_globalaccelerator_accelerator.accelerator[count.index].id
+  client_affinity = "NONE"
+  protocol        = "TCP"
+
+  port_range {
+    from_port = 443
+    to_port   = 443
+  }
+}
+
+resource "aws_globalaccelerator_endpoint_group" "alb" {
+  count   = var.create_globalaccelerator ? 1 : 0
+  listener_arn = aws_globalaccelerator_listener.listener[count.index].id
+  health_check_port = 443
+  endpoint_configuration {
+    endpoint_id = aws_lb.this[0].arn
+    weight      = 100
   }
 }

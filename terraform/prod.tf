@@ -37,6 +37,8 @@ module "alb" {
   source             = "./modules/alb"
 #  version = "~> 5.0"
   create_lb          = var.create_lb
+  create_route53     = var.create_route53
+  create_globalaccelerator  = var.create_globalaccelerator
   name               = var.name_alb
 
   load_balancer_type = var.load_balancer_type

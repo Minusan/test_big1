@@ -11,27 +11,28 @@ INSTANCE_TYPE      = "t3.large"
 key_name           = "mstar-stga-prod"
 associate_eip      = "false"
 eip_id             = "eipalloc-0c1f5e209a98f496f"
-root_size          = "120"
+root_size          = "320"
 volume = {
-    volume1        = { device_name = "xvdf", volume_id = "vol-098fc2bec56229ae5"},
+#    volume1        = { device_name = "xvdf", volume_id = "vol-098fc2bec56229ae5"},
 #    volume2        = { device_name = "/dev/sdi", volume_id = "vol-0797ab74843610a8e"}
     }
 
 ### S3 for tfstate info
 bucket             = "mstar-stga-prod-eu-west-1-provisioning-tfstate"
-key                = "GAP-LIVE-QA.tfstate"
+key                = "GAP-LIVE-WEBSITES.tfstate"
 
 ### Tags
 cost_center     = "Customer experience"
 MANAGED         = "TERRAFORM"
 SERVICEID       = "tc01171"
-Name            = "GAP-LIVE-QA"
+Name            = "GAP-LIVE-WEBSITES"
 ENVIRONMENT     = "PROD"
 TID             = "SUST"
 service         = "Global Access"
 
 # ALB
-create_lb           = "false"
+create_lb           = "true"
+create_globalaccelerator    = "true"
 name_alb            = "mstar-website"
 load_balancer_type  = "application"
 name_prefix         = ""
@@ -47,6 +48,7 @@ target_group_port   = 80
 target_group_sticky = "false"
 
 #Route 53
+create_route53      = "false"
 zone_id             = "Z073262128X8X3VFHVYUI"
 zone_name           = "test.devops.sustainalytics.com"
 zone_type           = "A"

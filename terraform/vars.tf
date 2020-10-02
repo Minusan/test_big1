@@ -76,3 +76,9 @@ variable "root_size" {}
 
 variable "key_name" {}
 variable "associate_eip" {}
+variable "create_route53" {
+  default = "false"
+  }
+variable "create_globalaccelerator" {
+  default = "false"
+  }

@@ -32,6 +32,7 @@ service         = "Global Access"
 
 # ALB
 create_lb           = "false"
+create_globalaccelerator    = "false"
 name_alb            = "mstar-website"
 load_balancer_type  = "application"
 name_prefix         = ""
@@ -47,6 +48,7 @@ target_group_port   = 80
 target_group_sticky = "false"
 
 #Route 53
+create_route53      = "false"
 zone_id             = "Z073262128X8X3VFHVYUI"
 zone_name           = "test.devops.sustainalytics.com"
 zone_type           = "A"
