@@ -1,9 +1,9 @@
 ### VPC info
 AWS_REGION         = "us-east-1"
-vpc_id             = "vpc-006c1b1e18a65d74f"
-public_subnet_ids  = ["subnet-02364c561847fc622", "subnet-06cdf30b1a6c46e83"]
-private_subnets    = ["subnet-0fe8a305eb1452691"]
-aws_sg_id          = ["sg-0cfc374136fcda9c8",]
+vpc_id             = "vpc-031a289acc5f4fb7c"
+public_subnet_ids  = ["subnet-000f047c00ceafd75", "subnet-0408ff7ee121c60c2"]
+private_subnets    = ["subnet-06d602f2297601bab"]
+aws_sg_id          = ["sg-061a7e4d7ee515272",]
 
 ### EC2 Instance info
 AMI                = "ami-0eb7fbcc77e5e6ec6"
@@ -32,7 +32,7 @@ service         = "Global Access"
 
 # ALB
 create_lb           = "false"
-create_globalaccelerator    = "true"
+create_globalaccelerator    = "false"
 name_alb            = "Test_EC2"
 load_balancer_type  = "application"
 name_prefix         = ""
