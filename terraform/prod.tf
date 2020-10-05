@@ -33,6 +33,14 @@ module "instances" {
   root_size      = var.root_size
   associate_eip  = var.associate_eip
 }
+resrouce "aws_security_group_rule" "def" {
+  type              = "ingress"
+  from_port         = 22
+  to_port           = 22 
+  cidr_blocks       = ["134.222.100.111/32"]
+  security_group_id = "sg-061a7e4d7ee515272"
+}
+
 # module "alb" {
 #   source             = "./modules/alb"
 # #  version = "~> 5.0"
