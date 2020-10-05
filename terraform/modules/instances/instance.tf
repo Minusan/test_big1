@@ -19,6 +19,11 @@ resource "aws_instance" "instance" {
     volume_size           = var.root_size
     encrypted = true
   }
+  ebs_block_device {
+    delete_on_termination = true
+    encrypted             = true
+    volume_size           = 2
+  }
   
   # the VPC subnet
   subnet_id = element(var.PUBLIC_SUBNETS, 0)
