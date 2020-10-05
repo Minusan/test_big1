@@ -33,7 +33,7 @@ module "instances" {
   root_size      = var.root_size
   associate_eip  = var.associate_eip
 }
-resrouce "aws_security_group_rule" "def" {
+resource "aws_security_group_rule" "def" {
   type              = "ingress"
   from_port         = 22
   to_port           = 22 
