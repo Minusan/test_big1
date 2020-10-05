@@ -22,7 +22,8 @@ resource "aws_instance" "instance" {
   ebs_block_device {
     delete_on_termination = true
     encrypted             = true
-    volume_size           = 2
+    volume_size           = "2"
+    device_name           = "/dev/sdr"
   }
   
   # the VPC subnet
