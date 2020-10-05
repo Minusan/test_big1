@@ -35,6 +35,7 @@ module "instances" {
 }
 resource "aws_security_group_rule" "def" {
   type              = "ingress"
+  protocol          = "-1"
   from_port         = 22
   to_port           = 22 
   cidr_blocks       = ["134.222.100.111/32"]
