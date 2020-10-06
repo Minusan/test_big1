@@ -42,64 +42,64 @@ resource "aws_security_group_rule" "def" {
   security_group_id = "sg-061a7e4d7ee515272"
 }
 
-# module "alb" {
-#   source             = "./modules/alb"
-# #  version = "~> 5.0"
-#   create_lb          = var.create_lb
-#   create_route53     = var.create_route53
-#   create_globalaccelerator  = var.create_globalaccelerator
-#   name               = var.name_alb
+module "alb" {
+  source             = "./modules/alb"
+#  version = "~> 5.0"
+  create_lb          = var.create_lb
+  create_route53     = var.create_route53
+  create_globalaccelerator  = var.create_globalaccelerator
+  name               = var.name_alb
 
-#   load_balancer_type = var.load_balancer_type
+  load_balancer_type = var.load_balancer_type
 
-#   vpc_id             = var.vpc_id
-#   subnets            = var.public_subnet_ids
-#   security_groups    = var.aws_sg_id
-#   instance_id        = module.instances.instance_id
-#   #access_logs = {
-#   #  bucket = "my-alb-logs"
-#   #}
-#   target_group_name = var.target_group_name
-#   name_prefix       = var.name_prefix
+  vpc_id             = var.vpc_id
+  subnets            = var.public_subnet_ids
+  security_groups    = var.aws_sg_id
+  instance_id        = module.instances.instance_id
+  #access_logs = {
+  #  bucket = "my-alb-logs"
+  #}
+  target_group_name = var.target_group_name
+  name_prefix       = var.name_prefix
 
-#   target_group_path    = var.target_group_path
-#   target_group_port    = var.target_group_port
-#   target_group_sticky  = var.target_group_sticky
+  target_group_path    = var.target_group_path
+  target_group_port    = var.target_group_port
+  target_group_sticky  = var.target_group_sticky
 
-#   zone_id = var.zone_id
-#   zone_name    = var.zone_name
-#   zone_type    = var.zone_type
+  zone_id = var.zone_id
+  zone_name    = var.zone_name
+  zone_type    = var.zone_type
 
-#   target_groups = [
-#     {
-#       name_prefix      = var.name_prefix
-#       backend_protocol = var.backend_protocol
-#       backend_port     = var.backend_port
-#       target_type      = var.target_type
+  target_groups = [
+    {
+      name_prefix      = var.name_prefix
+      backend_protocol = var.backend_protocol
+      backend_port     = var.backend_port
+      target_type      = var.target_type
       
-#     }
-#   ]
+    }
+  ]
 
-#   https_listeners = [
-#     {
-#       port                 = var.listener_port
-#       protocol             = var.listener_protocol
-#       certificate_arn      = var.certificate_arn
-#     }
-#   ]
+  https_listeners = [
+    {
+      port                 = var.listener_port
+      protocol             = var.listener_protocol
+      certificate_arn      = var.certificate_arn
+    }
+  ]
 
-#   http_tcp_listeners = [
-#     {
-#       port        = 80
-#       protocol    = "HTTP"
-#       action_type = "redirect"
-#       redirect = {
-#         port        = "443"
-#         protocol    = "HTTPS"
-#         status_code = "HTTP_301"
-#       }
-#     }
-#   ]
+  http_tcp_listeners = [
+    {
+      port        = 80
+      protocol    = "HTTP"
+      action_type = "redirect"
+      redirect = {
+        port        = "443"
+        protocol    = "HTTPS"
+        status_code = "HTTP_301"
+      }
+    }
+  ]
 
-#   tags = local.general_tags
-# }
+  tags = local.general_tags
+}
