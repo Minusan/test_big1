@@ -22,7 +22,7 @@ resource "aws_instance" "instance" {
   ebs_block_device {
     delete_on_termination = true
     encrypted             = true
-    volume_size           = "3"
+    volume_size           = "5"
     device_name           = "/dev/sdr"
   }
   
