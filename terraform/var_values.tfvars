@@ -1,9 +1,9 @@
 ### VPC info
 AWS_REGION         = "us-east-1"
-vpc_id             = "vpc-031a289acc5f4fb7c"
-public_subnet_ids  = ["subnet-000f047c00ceafd75", "subnet-0408ff7ee121c60c2"]
-private_subnets    = ["subnet-06d602f2297601bab"]
-aws_sg_id          = ["sg-061a7e4d7ee515272",]
+vpc_id             = "vpc-0bee2466ba68604a7"
+public_subnet_ids  = ["subnet-0000c9b7959ced30d","subnet-008dd3a238f963081"]
+private_subnets    = ["subnet-0b56acb085b83c083"]
+aws_sg_id          = ["sg-07ddb1b4e3e9fc318",]
 
 ### EC2 Instance info
 AMI                = "ami-0eb7fbcc77e5e6ec6"
