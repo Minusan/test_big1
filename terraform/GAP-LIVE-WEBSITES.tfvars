@@ -11,7 +11,7 @@ INSTANCE_TYPE      = "t3.large"
 key_name           = "mstar-stga-prod"
 associate_eip      = "false"
 eip_id             = "eipalloc-0c1f5e209a98f496f"
-root_size          = "320"
+root_size          = "100"
 volume = {
 #    volume1        = { device_name = "xvdf", volume_id = "vol-098fc2bec56229ae5"},
 #    volume2        = { device_name = "/dev/sdi", volume_id = "vol-0797ab74843610a8e"}
