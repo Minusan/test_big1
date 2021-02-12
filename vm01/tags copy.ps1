@@ -3,3 +3,4 @@ get-Azresource
 #test
 #new compy
 #ultima
+#hai sa dam mana cu mana cei cu inima romana
