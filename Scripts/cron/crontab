@@ -1,0 +1,2 @@
+#RPOps
+0 7 * * * /home/sustadmin/PDI/jobs/startWithCarte.sh w_RPOps_AWS_Sync.kjb
